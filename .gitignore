@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 *.bam
-*.bw
 *.fa
 *.reads
 *.log

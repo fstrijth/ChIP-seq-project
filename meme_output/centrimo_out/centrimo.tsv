@@ -1,0 +1,5 @@
+db_index	motif_id	motif_alt_id	consensus	E-value	adj_p-value	log_adj_p-value	bin_location	bin_width	total_width	sites_in_bin	total_sites	p_success	p-value	mult_tests
+
+# CentriMo (Local Motif Enrichment Analysis): Version 5.5.3 compiled on Jun 17 2023 at 01:08:31
+# The format of this file is described at http://localhost:8080/meme_5.5.3/doc/centrimo-output-format.html.
+# centrimo -seqlen 290 -verbosity 1 -oc meme_output/centrimo_out -bfile meme_output/background meme_output/overlapping.fa meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml motif_databases/FLY/OnTheFly_2014_Drosophila.meme

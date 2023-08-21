@@ -1,0 +1,166 @@
+Invoking:
+  getsize meme_output/overlapping.fa 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.43755
+Invoking:
+  fasta-most -min 50 < meme_output/overlapping.fa 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.35416
+Invoking:
+  fasta-center -dna -len 100 < meme_output/overlapping.fa 1> meme_output/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.455181
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 2 meme_output/overlapping.fa meme_output/background
+Finished invoke:
+  name: bg  status: 0  time: 0.171625
+Invoking:
+  meme meme_output/seqs-centered -oc meme_output/meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 15 -bfile meme_output/background -dna -seed 0 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 2555.032905
+Invoking:
+  streme --verbosity 1 --oc meme_output/streme_out -dna --seed 0 --p meme_output/seqs-centered --minw 6 --maxw 15 --order 2
+Finished invoke:
+  name: streme  status: 0  time: 545.579169
+Invoking:
+  centrimo -seqlen 290 -verbosity 1 -oc meme_output/centrimo_out -bfile meme_output/background meme_output/overlapping.fa meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml motif_databases/FLY/OnTheFly_2014_Drosophila.meme
+Finished invoke:
+  name: centrimo  status: 0  time: 10.585504
+Invoking:
+  tomtom -verbosity 1 -oc meme_output/meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc meme_output/meme_out/meme.xml motif_databases/FLY/OnTheFly_2014_Drosophila.meme
+Finished invoke:
+  name: meme_tomtom  status: 0  time: 6.837625
+Invoking:
+  tomtom -verbosity 1 -oc meme_output/streme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc meme_output/streme_out/streme.xml motif_databases/FLY/OnTheFly_2014_Drosophila.meme
+Finished invoke:
+  name: streme_tomtom  status: 0  time: 49.407577
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 meme_output/combined.meme meme_output/combined.meme 1> meme_output/motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 1.26724
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_1 -bgfile meme_output/background -keepprimary -primary GTCCCGTACTGGTCC meme_output/overlapping.fa meme_output/meme_out/meme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo1  status: 0  time: 2.547389
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_2 -bgfile meme_output/background -keepprimary -primary TTTSCAAATTTYGRT meme_output/overlapping.fa meme_output/meme_out/meme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo2  status: 0  time: 1.416086
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_3 -bgfile meme_output/background -keepprimary -primary ACGRGMYCAGTR meme_output/overlapping.fa meme_output/meme_out/meme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo3  status: 0  time: 2.914322
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_4 -bgfile meme_output/background -keepprimary -primary 1-SGGTCATCAAAWWW meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo4  status: 0  time: 1.286272
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_5 -bgfile meme_output/background -keepprimary -primary 2-TAAATGA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo5  status: 0  time: 4.914336
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_6 -bgfile meme_output/background -keepprimary -primary 4-CGTAATAAAATTTCC meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo6  status: 0  time: 1.125944
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_7 -bgfile meme_output/background -keepprimary -primary 5-GAACACAGTTTGAT meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo7  status: 0  time: 1.24729
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_8 -bgfile meme_output/background -keepprimary -primary 6-GTTGTGGCAAAA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo8  status: 0  time: 1.154105
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_9 -bgfile meme_output/background -keepprimary -primary 7-GATATTTACAAACGA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo9  status: 0  time: 1.086574
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_10 -bgfile meme_output/background -keepprimary -primary 10-ATAATTGTCTGAAT meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo10  status: 0  time: 1.164511
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_11 -bgfile meme_output/background -keepprimary -primary 11-ATAACTTGGCTAAA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo11  status: 0  time: 1.126055
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_12 -bgfile meme_output/background -keepprimary -primary 12-GCAAAATATGGCCAA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo12  status: 0  time: 1.419197
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_13 -bgfile meme_output/background -keepprimary -primary 13-ACATTCCAT meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo13  status: 0  time: 1.675842
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_14 -bgfile meme_output/background -keepprimary -primary 14-ATAGATGTAAG meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo14  status: 0  time: 2.142075
+Invoking:
+  spamo -verbosity 1 -oc meme_output/spamo_out_15 -bgfile meme_output/background -keepprimary -primary 15-AAAAATGCGAAA meme_output/overlapping.fa meme_output/streme_out/streme.xml meme_output/meme_out/meme.xml meme_output/streme_out/streme.xml
+Finished invoke:
+  name: spamo15  status: 0  time: 1.449864
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_1 --bgfile meme_output/background --motif GTCCCGTACTGGTCC meme_output/meme_out/meme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo1  status: 0  time: 10.573994
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_2 --bgfile meme_output/background --motif TTTSCAAATTTYGRT meme_output/meme_out/meme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo2  status: 0  time: 7.095948
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_3 --bgfile meme_output/background --motif ACGRGMYCAGTR meme_output/meme_out/meme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo3  status: 0  time: 6.801528
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_4 --bgfile meme_output/background --motif 1-SGGTCATCAAAWWW meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo4  status: 0  time: 6.271345
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_5 --bgfile meme_output/background --motif 2-TAAATGA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo5  status: 0  time: 6.243757
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_6 --bgfile meme_output/background --motif 4-CGTAATAAAATTTCC meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo6  status: 0  time: 6.481182
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_7 --bgfile meme_output/background --motif 5-GAACACAGTTTGAT meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo7  status: 0  time: 6.167968
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_8 --bgfile meme_output/background --motif 6-GTTGTGGCAAAA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo8  status: 0  time: 5.904495
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_9 --bgfile meme_output/background --motif 7-GATATTTACAAACGA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo9  status: 0  time: 6.915336
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_10 --bgfile meme_output/background --motif 10-ATAATTGTCTGAAT meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo10  status: 0  time: 7.200841
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_11 --bgfile meme_output/background --motif 11-ATAACTTGGCTAAA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo11  status: 0  time: 10.388737
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_12 --bgfile meme_output/background --motif 12-GCAAAATATGGCCAA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo12  status: 0  time: 7.605043
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_13 --bgfile meme_output/background --motif 13-ACATTCCAT meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo13  status: 0  time: 6.614347
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_14 --bgfile meme_output/background --motif 14-ATAGATGTAAG meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo14  status: 0  time: 6.417546
+Invoking:
+  fimo --verbosity 1 --oc meme_output/fimo_out_15 --bgfile meme_output/background --motif 15-AAAAATGCGAAA meme_output/streme_out/streme.xml meme_output/overlapping.fa
+Finished invoke:
+  name: fimo15  status: 0  time: 5.800732
+Writing output
+Invoking:
+  meme-chip_html_to_tsv meme_output/meme-chip.html meme_output/summary.tsv "meme-chip -oc meme_output -db motif_databases/FLY/OnTheFly_2014_Drosophila.meme macs2/overlapping.fa" 5.5.3 "Sat Jun 10 16\:19\:38 2023 -0700"
+Finished invoke:
+  name: summary  status: 0  time: 0.358031
+Done

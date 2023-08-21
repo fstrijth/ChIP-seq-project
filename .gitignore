@@ -17,6 +17,5 @@
 *.files
 *.tgz
 *.fastq
-meme_output/
 macs2/
 motif_databases/

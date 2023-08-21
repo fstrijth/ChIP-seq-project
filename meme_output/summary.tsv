@@ -1,0 +1,23 @@
+MOTIF_INDEX	MOTIF_SOURCE	MOTIF_ID	ALT_ID	CONSENSUS	WIDTH	SITES	E-VALUE	E-VALUE_SOURCE	MOST_SIMILAR_MOTIF_SOURCE	MOST_SIMILAR_MOTIF	URL
+1	MEME	GTCCCGTACTGGTCC	MEME-2	GTCCCGTACTGGTCC	15	189	9.3e-173	MEME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0061.1 (B7Z0S3_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0061.1
+2	MEME	TTTSCAAATTTYGRT	MEME-3	TTTSCAAATTTYGRT	15	222	1.8e-138	MEME	 	 	 
+3	MEME	ACGRGMYCAGTR	MEME-1	ACGRGMYCAGTR	12	299	2.7e-092	MEME	 	 	 
+4	STREME	1-SGGTCATCAAAWWW	STREME-1	SGGTCATCAAAWWW	14	230	3.8e-005	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0017.2 (A4V304_DROME_DNaseI)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0017.2
+5	STREME	2-TAAATGA	STREME-2	TAAATGA	7	327	8.3e-004	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0246.1 (O18401_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0246.1
+6	STREME	3-AATTTGGAAAAAC	STREME-3	AATTTGGAAAAAC	13	130	9.0e-004	STREME	 	 	 
+7	STREME	4-CGTAATAAAATTTCC	STREME-4	CGTAATAAAATTTCC	15	128	1.8e-003	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0490.1 (Q9W064_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0490.1
+8	STREME	5-GAACACAGTTTGAT	STREME-5	GAACACAGTTTGAT	14	125	3.7e-003	STREME	 	 	 
+9	STREME	6-GTTGTGGCAAAA	STREME-6	GTTGTGGCAAAA	12	132	7.5e-003	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0129.1 (EXD_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0129.1
+10	STREME	7-GATATTTACAAACGA	STREME-7	GATATTTACAAACGA	15	126	7.5e-003	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0511.1 (SLP1_DROME_SELEX)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0511.1
+11	STREME	8-GAAATTAAWTTTT	STREME-8	GAAATTAAWTTTT	13	173	1.1e-002	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0035.2 (ABDA_DROME_DNaseI)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0035.2
+12	STREME	9-ACTCGGTCCCGTACT	STREME-9	ACTCGGTCCCGTACT	15	165	1.5e-002	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0061.1 (B7Z0S3_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0061.1
+13	STREME	10-ATAATTGTCTGAAT	STREME-10	10-ATAATTGTCTGAAT	14	141	1.5e-002	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0209.2 (FTZ_DROME_DNaseI)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0209.2
+14	STREME	11-ATAACTTGGCTAAA	STREME-11	11-ATAACTTGGCTAAA	14	128	1.5e-002	STREME	 	 	 
+15	STREME	12-GCAAAATATGGCCAA	STREME-12	12-GCAAAATATGGCCAA	15	107	1.5e-002	STREME	motif_databases/FLY/OnTheFly_2014_Drosophila.meme	OTF0468.1 (Q9VJC1_DROME_B1H)	https://bhapp.c2b2.columbia.edu/OnTheFly/cgi-bin/motif_entry.php?protein_ID=OTF0468.1
+16	STREME	13-ACATTCCAT	STREME-13	13-ACATTCCAT	9	112	1.5e-002	STREME	 	 	 
+17	STREME	14-ATAGATGTAAG	STREME-14	14-ATAGATGTAAG	11	125	3.1e-002	STREME	 	 	 
+18	STREME	15-AAAAATGCGAAA	STREME-15	15-AAAAATGCGAAA	12	120	3.1e-002	STREME	 	 	 
+
+# MEME-ChIP (Motif Analysis of Large Nucleotide Datasets): Version 5.5.3 released on Sat Jun 10 16:19:38 2023 -0700
+# The format of this file is described at http://localhost:8080/meme_5.5.3//doc/meme-chip-output-format.html
+# meme-chip -oc meme_output -db motif_databases/FLY/OnTheFly_2014_Drosophila.meme macs2/overlapping.fa

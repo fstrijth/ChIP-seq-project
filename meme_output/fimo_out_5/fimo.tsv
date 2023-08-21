@@ -1,0 +1,4 @@
+
+# FIMO (Find Individual Motif Occurrences): Version 5.5.3 compiled on Jun 17 2023 at 01:08:33
+# The format of this file is described at http://localhost:8080/meme_5.5.3/doc/fimo-output-format.html.
+# fimo --verbosity 1 --oc meme_output/fimo_out_5 --bgfile meme_output/background --motif 2-TAAATGA meme_output/streme_out/streme.xml meme_output/overlapping.fa

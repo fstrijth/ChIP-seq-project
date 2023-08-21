@@ -17,5 +17,4 @@
 *.files
 *.tgz
 *.fastq
-macs2/
 motif_databases/

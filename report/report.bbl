@@ -1,0 +1,332 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{karolchik2003ucsc}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=28974ea41c687d2b09decfbb02727db3}{%
+           family={Karolchik},
+           familyi={K\bibinitperiod},
+           given={Donna},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c03c4ae3b5df124873aa2f99722d3ade}{%
+           family={Baertsch},
+           familyi={B\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=46ff3164c5acc63a76acba40e535237e}{%
+           family={Diekhans},
+           familyi={D\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=64aac5f3ba42e6b6c799facc0db555ac}{%
+           family={Furey},
+           familyi={F\bibinitperiod},
+           given={Terrence\bibnamedelima S},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=f2c634a783ed33909c46cdc357369ecf}{%
+           family={Hinrichs},
+           familyi={H\bibinitperiod},
+           given={Angie},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ba5c7066a0f641045b1d243f3dc8af72}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={YT},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=75393451b5e5e00f522803a9a285ae6a}{%
+           family={Roskin},
+           familyi={R\bibinitperiod},
+           given={Krishna\bibnamedelima M},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=877c816000fadbd52d4419d3adb3c518}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={Matt},
+           giveni={M\bibinitperiod}}}%
+        {{hash=361bb0a5e530314c1c8116e847b30c7e}{%
+           family={Sugnet},
+           familyi={S\bibinitperiod},
+           given={Charles\bibnamedelima W},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=58d8c7fdb5651dca09e529678f6ff24f}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Daryl\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{7f7529d82b5e4da46d037b0712339be6}
+      \strng{fullhash}{ab06b827a01775edb1d5fb96b72238d0}
+      \strng{bibnamehash}{7f7529d82b5e4da46d037b0712339be6}
+      \strng{authorbibnamehash}{7f7529d82b5e4da46d037b0712339be6}
+      \strng{authornamehash}{7f7529d82b5e4da46d037b0712339be6}
+      \strng{authorfullhash}{ab06b827a01775edb1d5fb96b72238d0}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nucleic acids research}
+      \field{number}{1}
+      \field{title}{The UCSC genome browser database}
+      \field{volume}{31}
+      \field{year}{2003}
+      \field{pages}{51\bibrangedash 54}
+      \range{pages}{4}
+    \endentry
+    \entry{li2009sequence}{article}{}
+      \name{author}{10}{}{%
+        {{hash=466d90849ccf7e74e32d338b7c35491d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Heng},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c23c544be69d5a11f41e88573fa31b66}{%
+           family={Handsaker},
+           familyi={H\bibinitperiod},
+           given={Bob},
+           giveni={B\bibinitperiod}}}%
+        {{hash=9230f619f70697545cc3d441515b3bc9}{%
+           family={Wysoker},
+           familyi={W\bibinitperiod},
+           given={Alec},
+           giveni={A\bibinitperiod}}}%
+        {{hash=773b22b5aaacf32d8c73f8bda3f26c01}{%
+           family={Fennell},
+           familyi={F\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c42a336d28e60e0158ab76e19b82bc1e}{%
+           family={Ruan},
+           familyi={R\bibinitperiod},
+           given={Jue},
+           giveni={J\bibinitperiod}}}%
+        {{hash=599684aecac812346c723706355c1f0f}{%
+           family={Homer},
+           familyi={H\bibinitperiod},
+           given={Nils},
+           giveni={N\bibinitperiod}}}%
+        {{hash=2ba433e428dec3ec900179ed16e29032}{%
+           family={Marth},
+           familyi={M\bibinitperiod},
+           given={Gabor},
+           giveni={G\bibinitperiod}}}%
+        {{hash=8adf88b4bd2c9785ddad5bfa05221f24}{%
+           family={Abecasis},
+           familyi={A\bibinitperiod},
+           given={Goncalo},
+           giveni={G\bibinitperiod}}}%
+        {{hash=517afe729b2eb59735ba80628d943bb0}{%
+           family={Durbin},
+           familyi={D\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f3832e8ad83fdbc117020d1a74af7b7b}{%
+           family={Subgroup},
+           familyi={S\bibinitperiod},
+           given={1000\bibnamedelimb Genome\bibnamedelimb Project\bibnamedelimb Data\bibnamedelima Processing},
+           giveni={1\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{7de69ceef8abd6e58f52a4fffba20d8e}
+      \strng{fullhash}{92a900449291b6533e862fbfd1debda1}
+      \strng{bibnamehash}{7de69ceef8abd6e58f52a4fffba20d8e}
+      \strng{authorbibnamehash}{7de69ceef8abd6e58f52a4fffba20d8e}
+      \strng{authornamehash}{7de69ceef8abd6e58f52a4fffba20d8e}
+      \strng{authorfullhash}{92a900449291b6533e862fbfd1debda1}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{bioinformatics}
+      \field{number}{16}
+      \field{title}{The sequence alignment/map format and SAMtools}
+      \field{volume}{25}
+      \field{year}{2009}
+      \field{pages}{2078\bibrangedash 2079}
+      \range{pages}{2}
+    \endentry
+    \entry{liao2019r}{article}{}
+      \name{author}{3}{}{%
+        {{hash=8862a5b0b57b7867c489a1f72c306329}{%
+           family={Liao},
+           familyi={L\bibinitperiod},
+           given={Yang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e8acfd40aa371634dafbda59822de12b}{%
+           family={Smyth},
+           familyi={S\bibinitperiod},
+           given={Gordon\bibnamedelima K},
+           giveni={G\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=b4e22f2196e5fdf40a8499f2d3f8bf02}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford Academic}%
+      }
+      \strng{namehash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \strng{fullhash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \strng{bibnamehash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \strng{authorbibnamehash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \strng{authornamehash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \strng{authorfullhash}{deae2c41f7e4b13dc54adb11590ee5b3}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nucleic acids research}
+      \field{number}{8}
+      \field{title}{The R package Rsubread is easier, faster, cheaper and better for alignment and quantification of RNA sequencing reads}
+      \field{volume}{47}
+      \field{year}{2019}
+      \field{pages}{e47\bibrangedash e47}
+      \range{pages}{-1}
+    \endentry
+    \entry{morgan2009shortread}{article}{}
+      \name{author}{6}{}{%
+        {{hash=aa19dfb803b07ffa13770d3889b3d558}{%
+           family={Morgan},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=62831e4feef4a1127074be90f88b62f4}{%
+           family={Anders},
+           familyi={A\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=99e2f07422e1f63a90126f60b3cd5abc}{%
+           family={Lawrence},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ca313960811b9ea954deda44cacc882d}{%
+           family={Aboyoun},
+           familyi={A\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=fbab07750665d39de85def9828ff000b}{%
+           family={Pagès},
+           familyi={P\bibinitperiod},
+           given={Hervé},
+           giveni={H\bibinitperiod}}}%
+        {{hash=8a97fae1ed0550968a6f77cd783776f5}{%
+           family={Gentleman},
+           familyi={G\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{2995cd9c43084cd5958411a42245335a}
+      \strng{fullhash}{7bf9ce714c9b7276165e1adfa8fda8f0}
+      \strng{bibnamehash}{2995cd9c43084cd5958411a42245335a}
+      \strng{authorbibnamehash}{2995cd9c43084cd5958411a42245335a}
+      \strng{authornamehash}{2995cd9c43084cd5958411a42245335a}
+      \strng{authorfullhash}{7bf9ce714c9b7276165e1adfa8fda8f0}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{19}
+      \field{title}{ShortRead: a bioconductor package for input, quality assessment and exploration of high-throughput sequence data}
+      \field{volume}{25}
+      \field{year}{2009}
+      \field{pages}{2607\bibrangedash 2608}
+      \range{pages}{2}
+    \endentry
+    \entry{nakato2021methods}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f5e4e898bba68844531b7c0088b7c87b}{%
+           family={Nakato},
+           familyi={N\bibinitperiod},
+           given={Ryuichiro},
+           giveni={R\bibinitperiod}}}%
+        {{hash=5e4171e554b23872cb48fbc33ccc358f}{%
+           family={Sakata},
+           familyi={S\bibinitperiod},
+           given={Toyonori},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{739480cdf71db56160e9cf6d2437c4c7}
+      \strng{fullhash}{739480cdf71db56160e9cf6d2437c4c7}
+      \strng{bibnamehash}{739480cdf71db56160e9cf6d2437c4c7}
+      \strng{authorbibnamehash}{739480cdf71db56160e9cf6d2437c4c7}
+      \strng{authornamehash}{739480cdf71db56160e9cf6d2437c4c7}
+      \strng{authorfullhash}{739480cdf71db56160e9cf6d2437c4c7}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Methods}
+      \field{title}{Methods for ChIP-seq analysis: A practical workflow and advanced applications}
+      \field{volume}{187}
+      \field{year}{2021}
+      \field{pages}{44\bibrangedash 53}
+      \range{pages}{10}
+    \endentry
+    \entry{de2012encode}{article}{}
+      \name{author}{1}{}{%
+        {{hash=8a4586cad6ea588b83aca06933c3e322}{%
+           family={Souza},
+           familyi={S\bibinitperiod},
+           given={Natalie},
+           giveni={N\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group US New York}%
+      }
+      \strng{namehash}{8a4586cad6ea588b83aca06933c3e322}
+      \strng{fullhash}{8a4586cad6ea588b83aca06933c3e322}
+      \strng{bibnamehash}{8a4586cad6ea588b83aca06933c3e322}
+      \strng{authorbibnamehash}{8a4586cad6ea588b83aca06933c3e322}
+      \strng{authornamehash}{8a4586cad6ea588b83aca06933c3e322}
+      \strng{authorfullhash}{8a4586cad6ea588b83aca06933c3e322}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature methods}
+      \field{number}{11}
+      \field{title}{The ENCODE project}
+      \field{volume}{9}
+      \field{year}{2012}
+      \field{pages}{1046\bibrangedash 1046}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -2,6 +2,7 @@
 \usepackage[backend=bibtex]{biblatex}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \addbibresource{bibliography.bib}
 \graphicspath{ {images/} }
 
@@ -57,38 +58,38 @@ Reads were mapped to the assembled genome using the Rsubread package\cite{liao20
 % $ computeMatrix reference-point --referencePoint center -b 2000 -a 2000 -R macs2/overlapping.bed -S filtered_ENCFF515LPH.bw filtered_ENCFF708WHR.bw -o matrix.gz --missingDataAsZero
 % $ plotHeatmap -m matrix.gz -out heatmap4.png
 
-Peak calling was performed with MACS2\cite{gaspar2018improved} using default parameters. Bedtools\cite{quinlan2010bedtools} was used to filter out blacklisted regions from the results. Removing these anomalous, unstructured or high in signal independent of cell line or experiment regions improves accuracy\cite{amemiya2019encode}. Concordance between replicates was then assessed by finding overlapping regions. Regions that overlap at least 30\% between the results of isogenic replicates 1 and 2 were kept for further analysis. Deeptools\cite{ramirez2014deeptools} was used to visualize the signal. Figure \ref{fig:heatmap} shows that there is a signal for both isogenic replicates. TODO: more explanation.
+Peak calling was performed with MACS2\cite{gaspar2018improved} using default parameters. Bedtools\cite{quinlan2010bedtools} was used to filter out blacklisted regions from the results. Removing these anomalous, unstructured or high in signal independent of cell line or experiment regions improves accuracy\cite{amemiya2019encode}. Concordance between replicates was then assessed by finding overlapping regions. Regions that overlap at least 30\% between the results of isogenic replicates 1 and 2 were kept for further analysis, this is meant to only keep peaks that are reproducible across the two replicates. The 30\% overlap was chosen for simplicity, but other measures of reproducibility exist as well such as the IDR framework\cite{li2011measuring}. Deeptools\cite{ramirez2014deeptools} was used to visualize the signal. Figure \ref{fig:heatmap} shows that there is a signal for both isogenic replicates.
 
 \begin{figure}[h]
-\caption{Profile plot and heatmap of both isogenic replicates.}
+\caption{Profile plot and heatmap of both isogenic replicates. The profile plots of both replicates have a similar shape, a peak at the center of the consensus peaks, with that of isogenic replicate 1 being a bit higher because of the bigger number of sequenced reads.}
 \centering
 \includegraphics[height=\textheight]{heatmap.png}
 \label{fig:heatmap}
 \end{figure}
 
 \subsection{Annotation and functional enrichment analysis}
-ChIPseeker\cite{yu2015chipseeker} was used to annotate genomic features. Figures \ref{fig:feat_dist} and \ref{feat_TSS} visualize the distances from the peak to the transcription start site of the nearest genes. TODO: describe.
+ChIPseeker\cite{yu2015chipseeker} was used to annotate genomic features. Figures \ref{fig:feat_dist} and \ref{feat_TSS} visualize the distances from the peak to the transcription start site (TSS) of the nearest genes. These figures reveal that a subset of peaks are near promotor regions, thus potentially being of interest in revealing transcriptional regulation. 
 
 \begin{figure}[h]
-\caption{Feature distribution}
+\caption{Distribution of locations of peaks relative to nearest TSS. Most peaks are either <= 1kb away from the promoter, distal intergenic, or "`other intron"'.}
 \centering
-\includegraphics{feature_distribution.png}
+\includegraphics[width=\textwidth]{feature_distribution.png}
 \label{fig:feat_dist}
 \end{figure}
 
 \begin{figure}[h]
-\caption{Feature distribution TSS}
+\caption{Distribution of transcription factor-binding loci relative to TSS.}
 \centering
-\includegraphics{feature_distribution_TSS.png}
+\includegraphics[width=\textwidth]{feature_distribution_TSS.png}
 \label{fig:feat_TSS}
 \end{figure}
 
-ReactomePA\cite{yu2016reactomepa} was used for functional enrichment analysis. Figure \ref{fig:pathways} displays the gene sets found. TODO: describe gene sets.
+ReactomePA\cite{yu2016reactomepa} was used for functional enrichment analysis. Figure \ref{fig:pathways} displays the gene sets found, a table with the full names and p-values can be found in the \hyperref{app:pathways}{appendix}. The three pathways with the lowest p-values are related to the Nonsense Mediated Decay (NMD) pathway, which 
 
 \begin{figure}[h]
-\caption{Pathways}
+\caption{Enriched pathways}
 \centering
-\includegraphics{pathways.png}
+\includegraphics[width=\textwidth]{pathways.png}
 \label{fig:pathways}
 \end{figure}
 
@@ -102,11 +103,42 @@ The CLI version of MEME-Chip\cite{machanick2011meme} was used to perform motif d
 % $ meme-chip -oc meme_output -db motif_databases/FLY/OnTheFly_2014_Drosophila.meme macs2/overlapping.fa
 
 \section{Conclusion}
-Future work:
-inclusion multi-mapped reads\cite{chung2011discovering}
+TODO: SAMENVATTING
+
+There are several more possibilities for analysis of this data. Multi-mapped reads were not included, but could yield further insight\cite{chung2011discovering}. Peaks from the two isogenic replicates were seen as overlapping if they overlapped 30\%, but there are other methods of measuring reproducibility of peaks, such as the Irreproducible Discovery Rate (IDR) \cite{li2011measuring}. 
 
 \printbibliography
 
 \appendix
+
+\begin{landscape}
+\section{Table of enriched pathways}
+\label{app:pathways}
+\begin{table}[]
+\begin{tabular}{llllllll}
+ID            & Description                                & GeneRatio & BgRatio  & pvalue   & p.adjust & qvalue & Count \\
+R-DME-975956  & Nonsense Mediated Decay (NMD) independent  & 24/554    & 85/4593  & 3.87e-05 & 0.0174   & 0.0154 & 24    \\
+							& of the Exon Junction Complex (EJC)         \\
+R-DME-927802  & Nonsense-Mediated Decay (NMD)              & 26/554    & 99/4593  & 7.28e-05 & 0.0175   & 0.0154 & 26    \\
+R-DME-975957  & Nonsense Mediated Decay (NMD) enhanced     & 26/554    & 99/4593  & 7.28e-05 & 0.0175   & 0.0154 & 26    \\
+							& by the Exon Junction Complex (EJC)         \\
+R-DME-5252538 & Drosophila signaling pathways              & 39/554    & 184/4593 & 0.000233 & 0.0313   & 0.0277 & 39    \\
+R-DME-72706   & GTP hydrolysis and joining of the 60S      & 21/554    & 78/4593  & 0.000246 & 0.0313   & 0.0277 & 21    \\
+							& ribosomal subunit													 \\
+R-DME-209446  & N-HH ligand not bound to PTC receptor      & 17/554    & 58/4593  & 0.000320 & 0.0313   & 0.0277 & 17    \\
+							& complex																		 \\
+R-DME-195721  & Signaling by WNT                           & 33/554    & 150/4593 & 0.000346 & 0.0313   & 0.0277 & 33    \\
+R-DME-72689   & Formation of a pool of free 40S subunits   & 23/554    & 91/4593  & 0.000348 & 0.0313   & 0.0277 & 23    \\
+R-DME-2454202 & Fc epsilon receptor (FCERI) signaling      & 21/554    & 82/4593  & 0.000516 & 0.0345   & 0.0304 & 21    \\
+R-DME-156827  & L13a-mediated translational silencing of   & 25/554    & 105/4593 & 0.000523 & 0.0345   & 0.0304 & 25    \\
+							& Ceruloplasmin expression									 \\
+R-DME-8951664 & Neddylation                                & 31/554    & 141/4593 & 0.000527 & 0.0345   & 0.0304 & 31    \\
+R-DME-1799339 & SRP-dependent cotranslational protein      & 21/554    & 83/4593  & 0.000615 & 0.0366   & 0.0324 & 21    \\
+							& targeting to membrane											 \\
+R-DME-72613   & Eukaryotic Translation Initiation          & 26/554    & 113/4593 & 0.000712 & 0.0366   & 0.0324 & 26    \\
+R-DME-72737   & Cap-dependent Translation Initiation       & 26/554    & 113/4593 & 0.000712 & 0.0366   & 0.0324 & 26    \\
+R-DME-209392  & Hedgehog pathway                           & 18/554    & 69/4593  & 0.00101  & 0.0485   & 0.0428 & 18   
+\end{tabular}
+\end{table}\end{landscape}
 
 \end{document}

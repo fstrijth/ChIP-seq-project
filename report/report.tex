@@ -3,6 +3,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{pdflscape}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
 \addbibresource{bibliography.bib}
 \graphicspath{ {images/} }
 
@@ -31,76 +34,60 @@ TODO: summary
 This analysis concerns data from Encode experiment \href{https://www.encodeproject.org/experiments/ENCSR264MBG/}{ENCSR264MBG}, the reads of which were sequences on the Illumina HiSeq 2000 platform. The analysis was performed on isogenic replicate 1 and 2. The reads are single-ended, with a length of 44 nucleotides. The genome assembly of Drosophila melanogaster was acquired from the UCSC genome browser\cite{karolchik2003ucsc}. The soft-masked assembly from the file \href{https://hgdownload.soe.ucsc.edu/goldenPath/dm6/bigZips/}{dm6.fa.gz} was used in the analysis. The BED file \href{https://github.com/Boyle-Lab/Blacklist}{dm6-blacklist.v2.bed.gz} with blacklisted regions was acquired from the Boyle Lab\cite{amemiya2019encode}. The database used for MEME-Chip analysis was OnTheFly_2014_Drosophila.meme\cite{shazman2014onthefly}, which contains 608 motifs, between 4 and 23 in width, with an average width of 9.3. 
 
 \section{Code availability}
-TODO
+R scripts, bash scripts and small output files can be found in this \hyperref{Git repository}{. 
 
 \section{Analysis}
 
 \subsection{Read mapping}
 
-% OPTIONAL: quality plots for reads (lesson 3 workshop)
 Code for this section is in the R script read\_mapping.R. The raw FASTQ files contain reads of length 44nt, 23 million for isogenic replicate 1, and 18 million for isogenic replicate 2. The ends of these reads were trimmed based on quality, ends with a quality score lower than 20 were trimmed. Reads with a length lower than 40nt were filtered out. This filtering was performed using the ShortRead package\cite{morgan2009shortread}.
 
 Reads were mapped to the assembled genome using the Rsubread package\cite{liao2019r} with default parameters. Then filtering was performed using Sambamba\cite{tarasov2015sambamba}. Unmapped reads, duplicates and multimapped reads were filtered out, leaving only uniquely mapping reads. While including multi-mapped reads would increase the number of usable reads and might increase the sensitivity of peak detection, they were omitted here, following convention, since the number of false positives might also increase\cite{chung2011discovering}.
 
-%OPTIONAL: mapping stats
-
-%Mapping statistics were calculated using the program Samtools\cite{li2009sequence}. Figure \ref{fig:coverage} contains a histogram of the read coverage. The average coverage is TODO. 21.166.296 reads were mapped to the genome for isogenic replicate 1, and TODO for isogenic replicate 2. 
-
 
 \subsection{Peak calling}
-
-
-%on cli:
-% $ macs2 callpeak -t ../filtered_ENCFF515LPH.bam -n ENCFF515LPH
-% $ bedtools intersect -v -a ENCFF515LPH_peaks.narrowPeak -b ../dm6-blacklist.v2.bed.gz > noblacklist_ENCFF515LPH.bed
-% $ bedtools intersect -wo -f 0.3 -r -a noblacklist_ENCFF515LPH.bed -b noblacklist_ENCFF708WHR.bed > overlapping.bed
-% $ bamCoverage -b filtered_ENCFF708WHR.bw -o filtered_ENCFF708WHR.bw
-% $ computeMatrix reference-point --referencePoint center -b 2000 -a 2000 -R macs2/overlapping.bed -S filtered_ENCFF515LPH.bw filtered_ENCFF708WHR.bw -o matrix.gz --missingDataAsZero
-% $ plotHeatmap -m matrix.gz -out heatmap4.png
-
 Peak calling was performed with MACS2\cite{gaspar2018improved} using default parameters. Bedtools\cite{quinlan2010bedtools} was used to filter out blacklisted regions from the results. Removing these anomalous, unstructured or high in signal independent of cell line or experiment regions improves accuracy\cite{amemiya2019encode}. Concordance between replicates was then assessed by finding overlapping regions. Regions that overlap at least 30\% between the results of isogenic replicates 1 and 2 were kept for further analysis, this is meant to only keep peaks that are reproducible across the two replicates. The 30\% overlap was chosen for simplicity, but other measures of reproducibility exist as well such as the IDR framework\cite{li2011measuring}. Deeptools\cite{ramirez2014deeptools} was used to visualize the signal. Figure \ref{fig:heatmap} shows that there is a signal for both isogenic replicates.
 
-\begin{figure}[h]
-\caption{Profile plot and heatmap of both isogenic replicates. The profile plots of both replicates have a similar shape, a peak at the center of the consensus peaks, with that of isogenic replicate 1 being a bit higher because of the bigger number of sequenced reads.}
+\begin{figure}[H]
 \centering
 \includegraphics[height=\textheight]{heatmap.png}
 \label{fig:heatmap}
+\caption{Profile plot and heatmap of both isogenic replicates. The profile plots of both replicates have a similar shape, a peak at the center of the consensus peaks, with that of isogenic replicate 1 being a bit higher because of the bigger number of sequenced reads.}
 \end{figure}
 
 \subsection{Annotation and functional enrichment analysis}
 ChIPseeker\cite{yu2015chipseeker} was used to annotate genomic features. Figures \ref{fig:feat_dist} and \ref{feat_TSS} visualize the distances from the peak to the transcription start site (TSS) of the nearest genes. These figures reveal that a subset of peaks are near promotor regions, thus potentially being of interest in revealing transcriptional regulation. 
 
-\begin{figure}[h]
-\caption{Distribution of locations of peaks relative to nearest TSS. Most peaks are either <= 1kb away from the promoter, distal intergenic, or "`other intron"'.}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{feature_distribution.png}
 \label{fig:feat_dist}
+\caption{Distribution of locations of peaks relative to nearest TSS. Most peaks are either <= 1kb away from the promoter, distal intergenic, or "`other intron"'.}
 \end{figure}
 
-\begin{figure}[h]
-\caption{Distribution of transcription factor-binding loci relative to TSS.}
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{feature_distribution_TSS.png}
 \label{fig:feat_TSS}
+\caption{Distribution of transcription factor-binding loci relative to TSS.}
 \end{figure}
 
-ReactomePA\cite{yu2016reactomepa} was used for functional enrichment analysis. Figure \ref{fig:pathways} displays the gene sets found, a table with the full names and p-values can be found in the \hyperref{app:pathways}{appendix}. The three pathways with the lowest p-values are related to the Nonsense Mediated Decay (NMD) pathway, which 
+ReactomePA\cite{yu2016reactomepa} was used for functional enrichment analysis. Figure \ref{fig:pathways} displays the gene sets found, a table with the full names and p-values can be found in the \hyperref{app:pathways}{appendix}. 15 Pathways were found to be enriched, a handful of which will be described here. The majority are signaling pathways, which matches Sin3A's description as a transcriptional regulation protein.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \caption{Enriched pathways}
 \centering
 \includegraphics[width=\textwidth]{pathways.png}
 \label{fig:pathways}
 \end{figure}
 
+Three pathways relating to the \textbf{Nonsense-Mediated Decay (NMD)} pathway were found, which activates the destruction of mRNAs containing premature termination codons. The \textbf{Drosophila signaling pathways} were also listed by ReactomePA, which has a number of participanting pathways that were part of the results as well. The \textbf{GTP hydrolysis and joining of the 60s ribosomal subunit} pathway was found to be enriched as well, which is involved in DNA translation. The \textbf{N-HH ligand not bound to PTC receptor complex} pathway was listed as enriched, as well as the \textbf{Hedgehog pathway}, of which it is a component. The Hedgehog pathway transmits information to embryonic cells required for cell differentiation. 
+
 \subsection{Motif discovery and annotation}
 % >docker run -v D:\GitHub\ChIP-seq-project:/home/meme -d memesuite/memesuite:latest
 
-The CLI version of MEME-Chip\cite{machanick2011meme} was used to perform motif discovery. 
+The CLI version of MEME-Chip\cite{machanick2011meme} was used to perform motif discovery. 15 motifs were discovered, details can be found in the \hyperref{app:meme}{appendix}. Eight of the motifs were found to be similar to known motifs. The most statistically significant motif was similar to that for the similar gene (sima) and the spineless gene (ss). Another motif bares a similarity to the Abdominal B (Abd-B). The next motif is similar to that for the D19A gene. Another motif is similar to that for the caudal (cad) gene and the CG42234 gene. 
 
-
-% $ bedtools getfasta -fi ../dm6.fa -bed overlapping.bed -fo overlapping.fa
-% $ meme-chip -oc meme_output -db motif_databases/FLY/OnTheFly_2014_Drosophila.meme macs2/overlapping.fa
 
 \section{Conclusion}
 TODO: SAMENVATTING
@@ -114,31 +101,65 @@ There are several more possibilities for analysis of this data. Multi-mapped rea
 \begin{landscape}
 \section{Table of enriched pathways}
 \label{app:pathways}
-\begin{table}[]
-\begin{tabular}{llllllll}
-ID            & Description                                & GeneRatio & BgRatio  & pvalue   & p.adjust & qvalue & Count \\
-R-DME-975956  & Nonsense Mediated Decay (NMD) independent  & 24/554    & 85/4593  & 3.87e-05 & 0.0174   & 0.0154 & 24    \\
-							& of the Exon Junction Complex (EJC)         \\
-R-DME-927802  & Nonsense-Mediated Decay (NMD)              & 26/554    & 99/4593  & 7.28e-05 & 0.0175   & 0.0154 & 26    \\
-R-DME-975957  & Nonsense Mediated Decay (NMD) enhanced     & 26/554    & 99/4593  & 7.28e-05 & 0.0175   & 0.0154 & 26    \\
-							& by the Exon Junction Complex (EJC)         \\
-R-DME-5252538 & Drosophila signaling pathways              & 39/554    & 184/4593 & 0.000233 & 0.0313   & 0.0277 & 39    \\
-R-DME-72706   & GTP hydrolysis and joining of the 60S      & 21/554    & 78/4593  & 0.000246 & 0.0313   & 0.0277 & 21    \\
-							& ribosomal subunit													 \\
-R-DME-209446  & N-HH ligand not bound to PTC receptor      & 17/554    & 58/4593  & 0.000320 & 0.0313   & 0.0277 & 17    \\
-							& complex																		 \\
-R-DME-195721  & Signaling by WNT                           & 33/554    & 150/4593 & 0.000346 & 0.0313   & 0.0277 & 33    \\
-R-DME-72689   & Formation of a pool of free 40S subunits   & 23/554    & 91/4593  & 0.000348 & 0.0313   & 0.0277 & 23    \\
-R-DME-2454202 & Fc epsilon receptor (FCERI) signaling      & 21/554    & 82/4593  & 0.000516 & 0.0345   & 0.0304 & 21    \\
-R-DME-156827  & L13a-mediated translational silencing of   & 25/554    & 105/4593 & 0.000523 & 0.0345   & 0.0304 & 25    \\
-							& Ceruloplasmin expression									 \\
-R-DME-8951664 & Neddylation                                & 31/554    & 141/4593 & 0.000527 & 0.0345   & 0.0304 & 31    \\
-R-DME-1799339 & SRP-dependent cotranslational protein      & 21/554    & 83/4593  & 0.000615 & 0.0366   & 0.0324 & 21    \\
-							& targeting to membrane											 \\
-R-DME-72613   & Eukaryotic Translation Initiation          & 26/554    & 113/4593 & 0.000712 & 0.0366   & 0.0324 & 26    \\
-R-DME-72737   & Cap-dependent Translation Initiation       & 26/554    & 113/4593 & 0.000712 & 0.0366   & 0.0324 & 26    \\
-R-DME-209392  & Hedgehog pathway                           & 18/554    & 69/4593  & 0.00101  & 0.0485   & 0.0428 & 18   
-\end{tabular}
-\end{table}\end{landscape}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|m{3cm}|m{6cm}|m{1cm}|m{1.5cm}|m{2cm}|m{1cm}|m{1cm}|m{1cm}|}
+    \hline
+        ID & Description & Gene Ratio & BgRatio & pvalue & padj & qvalue & Count \\ \hline
+        R-DME-975956 & Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC) & 24/554 & 85/4593 & 3.87e-05 & 0.0174 & 0.0154 & 24 \\ \hline
+        R-DME-927802 & Nonsense-Mediated Decay (NMD) & 26/554 & 99/4593 & 7.28e-05 & 0.0175 & 0.0154 & 26 \\ \hline
+        R-DME-975957 & Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC) & 26/554 & 99/4593 & 7.28e-05 & 0.0175 & 0.0154 & 26 \\ \hline
+        R-DME-5252538 & Drosophila signaling pathways & 39/554 & 184/4593 & 0.000233 & 0.0313 & 0.0277 & 39 \\ \hline
+        R-DME-72706 & GTP hydrolysis and joining of the 60S ribosomal subunit & 21/554 & 78/4593 & 0.000246 & 0.0313 & 0.0277 & 21 \\ \hline
+        R-DME-209446 & N-HH ligand not bound to PTC receptor complex & 17/554 & 58/4593 & 0.000320 & 0.0313 & 0.0277 & 17 \\ \hline
+        R-DME-195721 & Signaling by WNT & 33/554 & 150/4593 & 0.000346 & 0.0313 & 0.0277 & 33 \\ \hline
+        R-DME-72689 & Formation of a pool of free 40S subunits & 23/554 & 91/4593 & 0.000348 & 0.0313 & 0.0277 & 23 \\ \hline
+        R-DME-2454202 & Fc epsilon receptor (FCERI) signaling & 21/554 & 82/4593 & 0.000516 & 0.0345 & 0.0304 & 21 \\ \hline
+        R-DME-156827 & L13a-mediated translational silencing of Ceruloplasmin expression & 25/554 & 105/4593 & 0.000523 & 0.0345 & 0.0304 & 25 \\ \hline
+        R-DME-8951664 & Neddylation & 31/554 & 141/4593 & 0.000527 & 0.0345 & 0.0304 & 31 \\ \hline
+        R-DME-1799339 & SRP-dependent cotranslational protein targeting to membrane & 21/554 & 83/4593 & 0.000615 & 0.0366 & 0.0324 & 21 \\ \hline
+        R-DME-72613 & Eukaryotic Translation Initiation & 26/554 & 113/4593 & 0.000712 & 0.0366 & 0.0324 & 26 \\ \hline
+        R-DME-72737 & Cap-dependent Translation Initiation & 26/554 & 113/4593 & 0.000712 & 0.0366 & 0.0324 & 26 \\ \hline
+        R-DME-209392 & Hedgehog pathway & 18/554 & 69/4593 & 0.00101 & 0.0485 & 0.0428 & 18 \\ \hline
+    \end{tabular}
+\end{table}
+\end{landscape}
+
+\section{Motif discovery}
+\begin{longtable}{|m{6.5cm}|m{1.5cm}|m{5cm}|}
+	\hline
+	Motif & E-value & Known or similar motifs\\
+	\hline
+	\includegraphics[scale=0.5]{motif1.png} & 9.3e-173 & B7Z0S3\_DROME\_B1H, FBpp0289432\_B1H \\
+	\hline
+	\includegraphics[scale=0.5]{motif2.png} & 1.8e-138 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif3.png} & 2.7e-092 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif4.png} & 3.8e-005 & A4V304\_DROME\_DNaseI, ABDB\_DROME\_DNaseI, Q86P38\_DROME\_DNaseI\\
+	\hline
+	\includegraphics[scale=0.5]{motif5.png} & 8.3e-004 & O18401\_DROME\_B1H\\
+	\hline
+	\includegraphics[scale=0.5]{motif6.png} & 1.8e-003 & 	Q9W064\_DROME\_B1H , CAD\_DROME\_B1H \\
+	\hline
+	\includegraphics[scale=0.5]{motif7.png} & 3.7e-003 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif8.png} & 7.5e-003 & EXD\_DROME\_B1H\\
+	\hline
+	\includegraphics[scale=0.5]{motif9.png} & 7.5e-003 & SLP1\_DROME\_SELEX\\
+	\hline
+	\includegraphics[scale=0.5]{motif10.png} & 1.5e-002 & FTZ\_DROME\_DNaseI\\
+	\hline
+	\includegraphics[scale=0.5]{motif11.png} & 1.5e-002 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif12.png} & 1.5e-002 & Q9VJC1\_DROME\_B1H \\
+	\hline
+	\includegraphics[scale=0.5]{motif13.png} & 1.5e-002 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif14.png} & 3.1e-002 & \\
+	\hline
+	\includegraphics[scale=0.5]{motif15.png} & 3.1e-002 & \\
+	\hline
+\end{longtable}
 
 \end{document}

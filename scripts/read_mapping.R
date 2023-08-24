@@ -18,9 +18,3 @@ writeFastq(filtered_reads, paste("trimmed_",id,".fastq",sep=""), mode="a")
 # MAPPING READS
 buildindex(basename="dm6_index", reference="dm6.fa.gz")
 align(index="dm6_index", readfile1 = paste("trimmed_",id,".fastq",sep=""), type="rna", output_file=paste(id,".bam",sep=""))
-
-# SORTING, FURTHER FILTERING
-# ran the following on cli:
-# $ samtools sort ENCFF515LPH.bam > sorted_ENCFF515LPH.bam
-# $ sambamba view -h -f bam -F "[XS] == null and not unmapped and not duplicate" sorted_ENCFF515LPH.bam > filtered_ENCFF515LPH.bam
-
